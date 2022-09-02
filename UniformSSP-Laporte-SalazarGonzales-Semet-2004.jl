@@ -45,7 +45,7 @@ function UniformSSP_Laporte_Formulation(instanceSSP, magazineCap, MILP_Limit)
     # 4 | initialize decision variables
     @variable(model, X[arcIJ], Bin) # X[ij] = Equal to 1 if job i processed in position j
     @variable(model, Y[arcJT], Bin) # Y[jt] = Equal to 1 if tool t presents while performing a job in position j
-    @variable(model, Z[arcJT], Bin) # Z[jt] = tool switch, equal to 1 if tool t is in magazine while performing a job
+    @variable(model, Z[arcJT], Bin) # Z[jt] = tool switch, equal to 1 if tool t is in magazine while performing job j
     
     # 5 | define objective function
     @objective(model, Min, 
@@ -146,4 +146,4 @@ MILP_Limit = Int(3600)
 # U_active, V_active, W_active --> return the active variables
 # runtimeCount --> return the runtime in seconds
 # completeResults --> return the complete results storage
-solutionObjective, solutionGap, U_active, V_active, W_active, runtimeCount, completeResults = UniformSSP_Laporte_Formulation(instanceSSP, magazineCap, MILP_Limit)
+solutionObjective, solutionGap, X_active, Y_active, Z_active, runtimeCount, completeResults = UniformSSP_Laporte_Formulation(instanceSSP, magazineCap, MILP_Limit)
