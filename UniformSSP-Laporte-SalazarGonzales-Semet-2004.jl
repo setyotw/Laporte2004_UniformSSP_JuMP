@@ -43,9 +43,9 @@ function UniformSSP_Laporte_Formulation(instanceSSP, magazineCap, MILP_Limit)
     model = Model(Gurobi.Optimizer)
 
     # 4 | initialize decision variables
-    @variable(model, X[arcIJ], Bin) # U[jk] = Equal to 1 if job j processed in position k
-    @variable(model, Y[arcJT], Bin) # V[kt] = Equal to 1 if tool t presents while performing a job in position k
-    @variable(model, Z[arcJT], Bin) # W[kt] = tool switch, equal to 1 if tool t is in magazine while performing a job
+    @variable(model, X[arcIJ], Bin) # X[ij] = Equal to 1 if job i processed in position j
+    @variable(model, Y[arcJT], Bin) # Y[jt] = Equal to 1 if tool t presents while performing a job in position j
+    @variable(model, Z[arcJT], Bin) # Z[jt] = tool switch, equal to 1 if tool t is in magazine while performing a job
     
     # 5 | define objective function
     @objective(model, Min, 
